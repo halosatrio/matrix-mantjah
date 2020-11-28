@@ -4,18 +4,20 @@ import random
 
 num = int(sys.argv[1])
 maxnum = (num*num)
+
+# generate list with unique random number in range 0 to (num*num)-1
 generated = random.sample(range(0, maxnum), maxnum)
 
+# define max digit on the list
 maxdigit = len(str(maxnum-1))
 
-decimal = str(5).zfill(maxdigit)
+# change each number on the list into decimal.
+decimal = []
+for i in generated:
+    decimal.append(str(i).zfill(maxdigit))
 
-matrix = np.array(generated).reshape((num, num))
+# generate matrix num x num
+matrix = np.array(decimal).reshape((num, num))
 
-print(generated)
-print('')
-print(matrix)
-print('')
-print(maxdigit)
-print('')
-print(decimal)
+# print the output aesthetically
+print('\n'.join(['  '.join([str(cell) for cell in row]) for row in matrix]))
