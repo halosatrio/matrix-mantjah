@@ -1,4 +1,8 @@
 import sys
+import numpy as np
 
-print('Number of arguments:', len(sys.argv), 'arguments.')
-print('Argument List:', str(sys.argv))
+num = int(sys.argv[1])
+
+matrix = np.zeros(shape=(num, num))
+
+print(matrix)
