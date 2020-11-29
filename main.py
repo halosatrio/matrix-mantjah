@@ -14,6 +14,7 @@ maxdigit = len(str(maxnum-1))
 matrix = np.array(generated).reshape((num, num))
 
 
+# fungsi cek dan benerin rows
 def check(row):
     hasil = []
     for i in range(len(row)):
@@ -29,6 +30,7 @@ def check(row):
         return True
 
 
+# fungsi cek validnya
 def valid():
     global matrix
     for row in matrix:
@@ -37,8 +39,13 @@ def valid():
             valid()
         if check(row) == True:
             pass
-    # print('\n'.join(['  '.join([str(cell) for cell in row])
-    #                  for row in matrix]))
+    matrix = np.transpose(matrix)
+    for row in matrix:
+        if check(row) == False:
+            random.shuffle(row)
+            valid()
+        if check(row) == True:
+            pass
 
 # def valid():
 #     global matrix
@@ -48,14 +55,6 @@ def valid():
 #         if check(row) == True:
 #             print('True')
 
-
-# # change each number on the list into decimal.
-# decimal = []
-# for i in generated:
-#     decimal.append(str(i).zfill(maxdigit))
-
-# # generate matrix num x num
-# hasil = np.array(decimal).reshape((num, num))
 
 # print the output aesthetically
 if num >= 5:

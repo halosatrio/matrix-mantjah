@@ -1,23 +1,22 @@
 import random
 import numpy as np
 
-num = 3
+num = 10
 maxnum = (num*num)
 
-row = random.sample(range(0, maxnum), maxnum)
+arr = random.sample(range(0, maxnum), maxnum)
 
-matrix = np.array(row).reshape((num, num))
+matrix = np.array(arr).reshape((num, num))
 
-hasil = matrix.reshape((1, maxnum))[0]
+# print("list: \n", arr, "\n")
 
-print(row, "\n")
-
+print("matrix:")
 print(matrix, "\n")
 
-print(hasil, "\n")
+print("checking row:")
 
 
-def valid(row):
+def check(row):
     hasil = []
     for i in range(len(row)):
         if i == len(row)-1:
@@ -26,14 +25,31 @@ def valid(row):
             hasil.append(False)
         else:
             hasil.append(True)
-    print(hasil)
     if False in hasil:
-        print('False')
+        return False
     else:
-        print('True')
+        return True
 
 
-valid(row)
+def valid():
+    global matrix
+    for row in matrix:
+        if check(row) == False:
+            random.shuffle(row)
+            valid()
+        if check(row) == True:
+            pass
+    matrix = np.transpose(matrix)
+    for row in matrix:
+        if check(row) == False:
+            random.shuffle(row)
+            valid()
+        if check(row) == True:
+            pass
+
+
+valid()
+print(matrix, "\n")
 
 # print('False')
 # print('True')
