@@ -11,6 +11,7 @@ generated = random.sample(range(0, maxnum), maxnum)
 # define max digit on the list
 maxdigit = len(str(maxnum-1))
 
+# generate matrix NxN
 matrix = np.array(generated).reshape((num, num))
 
 
@@ -46,14 +47,6 @@ def valid():
             valid()
         if check(row) == True:
             pass
-
-# def valid():
-#     global matrix
-#     for row in matrix:
-#         if check(row) == False:
-#             print('False')
-#         if check(row) == True:
-#             print('True')
 
 
 # print the output aesthetically
